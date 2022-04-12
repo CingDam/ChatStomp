@@ -15,8 +15,8 @@ public class RoomServiceImpl implements RoomService {
 	RoomDao dao;
 	
 	@Override
-	public List<Room> list(int userCode) {
-		return dao.list(userCode);
+	public List<Room> list() {
+		return dao.list();
 	}
 
 	@Override

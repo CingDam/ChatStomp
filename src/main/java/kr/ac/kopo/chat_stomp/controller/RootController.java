@@ -33,6 +33,13 @@ public class RootController {
 			return "redirect:.";
 		}
 		
+		return "redirect:login";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
 		return "redirect:.";
 	}
 }

@@ -6,7 +6,7 @@ import kr.ac.kopo.chat_stomp.model.Room;
 
 public interface RoomService {
 
-	List<Room> list(int userCode);
+	List<Room> list();
 
 	void add(Room item);
 

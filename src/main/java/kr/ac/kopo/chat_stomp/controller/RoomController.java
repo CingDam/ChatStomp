@@ -2,6 +2,8 @@ package kr.ac.kopo.chat_stomp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.chat_stomp.model.Room;
 import kr.ac.kopo.chat_stomp.model.User;
@@ -25,14 +26,15 @@ public class RoomController {
 	RoomService service;
 	
 	@RequestMapping({"/","list"})
-	public String list(Model model,@SessionAttribute User item) {
+	public String list(Model model,HttpSession session) {
 		
+		User user = (User) session.getAttribute("user");
 		
-		List<Room> list = service.list(item.getUserCode());
+		System.out.println(user.getUserId());
+		
+		List<Room> list = service.list();
 		
 		model.addAttribute("list",list);
-		
-		model.addAttribute("userId", item.getUserId());
 		
 		return path+"list";
 	}
@@ -42,14 +44,21 @@ public class RoomController {
 		return path + "add";
 	}
 	@PostMapping("/add")
-	public String add(Room item) {
+	public String add(Room item,HttpSession session) {
+		
+		User user = (User) session.getAttribute("user");
+		
+		System.out.println(user.getUserId());
+		System.out.println(item.getRoomName());
+		
+		item.setUserId(user.getUserId());
 		service.add(item);
-		return "redirect:.";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/delete/{roomCode}")
 	public String delete(@PathVariable int roomCode){
 		service.delete(roomCode);
-		return "redirect:.";
+		return "redirect:..";
 	}
 }
