@@ -31,4 +31,10 @@ public class RoomServiceImpl implements RoomService {
 
 	}
 
+	@Override
+	public Room item(int roomCode) {
+		
+		return dao.item(roomCode);
+	}
+
 }

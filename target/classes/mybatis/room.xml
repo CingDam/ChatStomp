@@ -17,4 +17,9 @@
 		WHERE room_code = #{roomCode}
 	</delete>
 	
+	<select id="item" resultType="Room">
+		SELECT * FROM chat_room
+		WHERE room_code = #{roomCode}
+	</select>
+	
 </mapper>

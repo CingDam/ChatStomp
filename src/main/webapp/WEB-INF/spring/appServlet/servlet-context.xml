@@ -23,15 +23,15 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<websocket:handlers>
-		<websocket:mapping handler="ChatHandler" path="/handler"/>
-		<websocket:handshake-interceptors>
-			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-		</websocket:handshake-interceptors>
-		<websocket:sockjs websocket-enabled="true"/>
-	</websocket:handlers>
-	
-	<beans:bean id="ChatHandler" class="kr.ac.kopo.chat_stomp.handler.ChatHandler"/>
+	<websocket:message-broker>
+		<websocket:stomp-endpoint path="/handler">
+			<websocket:handshake-interceptors >
+				<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+			</websocket:handshake-interceptors>
+			<websocket:sockjs></websocket:sockjs>
+		</websocket:stomp-endpoint>
+		<websocket:simple-broker prefix="/pub,/sub"/>
+	</websocket:message-broker>
 	
 	<context:component-scan base-package="kr.ac.kopo." />
 	
