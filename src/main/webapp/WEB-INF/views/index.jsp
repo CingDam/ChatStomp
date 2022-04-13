@@ -13,15 +13,16 @@
 	</div>
 	<c:if test="${sessionScope.user != null}">
 		<span>${sessionScope.user.userId } 님 환영합니다</span>
+		<span><a href="logout">로그아웃</a></span>
 	</c:if>
-	<c:if test="${sessionScope.member == null }">
+	<c:if test="${sessionScope.user == null }">
 		<div>
 			<a href="/login">로그인</a>
 		</div>
 	</c:if>
 	<div>
 		<ul>
-			<li><a href="room">채팅방 목록</a></li>
+			<li><a href="room/">채팅방 목록</a></li>
 		</ul>
 	</div>
 	

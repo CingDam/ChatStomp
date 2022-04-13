@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService {
 		
 		if(user != null) {
 			
-			user.setUserCode(item.getUserCode());
 			user.setUserId(item.getUserId());
 			user.setUserPw(null);
 			

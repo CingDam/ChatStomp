@@ -8,10 +8,12 @@
 	
 	<typeAliases>
 		<typeAlias type="kr.ac.kopo.chat_stomp.model.User" alias="User"/>
+		<typeAlias type="kr.ac.kopo.chat_stomp.model.Room" alias="Room"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/user.xml"/>
+		<mapper resource="mybatis/room.xml"/>
 	</mappers>
 	
 </configuration>
