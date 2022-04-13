@@ -32,4 +32,10 @@ public class RoomDaoImpl implements RoomDao {
 		
 	}
 
+	@Override
+	public Room item(int roomCode) {
+		
+		return sql.selectOne("room.item",roomCode);
+	}
+
 }

@@ -12,4 +12,6 @@ public interface RoomService {
 
 	void delete(int roomCode);
 
+	Room item(int roomCode);
+
 }

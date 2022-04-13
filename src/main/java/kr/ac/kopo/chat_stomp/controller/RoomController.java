@@ -61,4 +61,14 @@ public class RoomController {
 		service.delete(roomCode);
 		return "redirect:..";
 	}
+	
+	@GetMapping("chat_room/{roomCode}")
+	public String view(@PathVariable int roomCode,Model model) {
+		
+		Room item = service.item(roomCode);
+		
+		model.addAttribute("item",item);
+		
+		return path + "view";
+	}
 }

@@ -28,7 +28,7 @@
 				</c:if>
 				<c:forEach var="item" items="${list}">
 					<td>${item.roomCode }</td>
-					<td>${item.roomName }</td>
+					<td><a href="view/${item.roomCode}">${item.roomName }</a></td>
 					<td><a href="delete/${item.roomCode}">삭제</a></td>
 				</c:forEach>
 			</tbody>
